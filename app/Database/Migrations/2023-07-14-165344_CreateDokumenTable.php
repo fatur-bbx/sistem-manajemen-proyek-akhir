@@ -11,7 +11,7 @@ class CreateDokumenTable extends Migration
         $this->forge->addField([
             'id_dokumen' => [
                 'type' => 'INT',
-                'constraint' => 5,
+                'constraint' => 11,
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
@@ -20,12 +20,12 @@ class CreateDokumenTable extends Migration
                 'constraint' => 255,
             ],
             'jenis_dokumen' => [
-                'type' => 'VARCHAR',
-                'constraint' => 50,
+                'type' => 'INT',
+                'constraint' => 4,
             ],
             'id_mahasiswa' => [
                 'type' => 'INT',
-                'constraint' => 5,
+                'constraint' => 11,
                 'unsigned' => true,
             ],
         ]);

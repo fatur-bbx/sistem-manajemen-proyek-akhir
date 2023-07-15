@@ -11,7 +11,7 @@ class CreatePenggunaTable extends Migration
         $this->forge->addField([
             'id_pengguna' => [
                 'type' => 'INT',
-                'constraint' => 5,
+                'constraint' => 11,
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
@@ -24,8 +24,8 @@ class CreatePenggunaTable extends Migration
                 'constraint' => 255,
             ],
             'level' => [
-                'type' => 'VARCHAR',
-                'constraint' => 50,
+                'type' => 'INT',
+                'constraint' => 4,
             ],
         ]);
         $this->forge->addPrimaryKey('id_pengguna');

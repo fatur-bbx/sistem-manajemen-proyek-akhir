@@ -11,7 +11,7 @@ class CreateKbkTable extends Migration
         $this->forge->addField([
             'id_kbk' => [
                 'type' => 'INT',
-                'constraint' => 5,
+                'constraint' => 11,
                 'unsigned' => true,
                 'auto_increment' => true,
             ],

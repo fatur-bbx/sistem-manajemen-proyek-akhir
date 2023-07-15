@@ -11,7 +11,7 @@ class CreateMahasiswaTable extends Migration
         $this->forge->addField([
             'id_mahasiswa' => [
                 'type' => 'INT',
-                'constraint' => 5,
+                'constraint' => 11,
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
@@ -41,12 +41,12 @@ class CreateMahasiswaTable extends Migration
             ],
             'id_kbk' => [
                 'type' => 'INT',
-                'constraint' => 5,
+                'constraint' => 11,
                 'unsigned' => true,
             ],
             'id_dosen' => [
                 'type' => 'INT',
-                'constraint' => 5,
+                'constraint' => 11,
                 'unsigned' => true,
             ],
             'created_at' => [
