@@ -4,8 +4,6 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-use function PHPSTORM_META\type;
-
 class CreateMahasiswaTable extends Migration
 {
     public function up()
@@ -22,11 +20,11 @@ class CreateMahasiswaTable extends Migration
                 'constraint' => 255,
             ],
             'username' => [
-                'type' => "VARCHAR",
+                'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
             'password' => [
-                'type' => "VARCHAR",
+                'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
             'nim' => [
@@ -41,11 +39,12 @@ class CreateMahasiswaTable extends Migration
                 'type' => 'INT',
                 'constraint' => 4,
             ],
-            'periode' => [
-                'type' => 'VARCHAR',
-                'constraint' => 20,
-            ],
             'id_kbk' => [
+                'type' => 'INT',
+                'constraint' => 5,
+                'unsigned' => true,
+            ],
+            'id_dosen' => [
                 'type' => 'INT',
                 'constraint' => 5,
                 'unsigned' => true,
@@ -59,8 +58,10 @@ class CreateMahasiswaTable extends Migration
                 'null' => true,
             ],
         ]);
+
         $this->forge->addPrimaryKey('id_mahasiswa');
         $this->forge->addForeignKey('id_kbk', 'kbk', 'id_kbk', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('id_dosen', 'pengguna', 'id_pengguna', 'CASCADE', 'CASCADE');
         $this->forge->createTable('mahasiswa');
     }
 

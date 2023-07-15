@@ -11,7 +11,7 @@ class MahasiswaModel extends Model
     protected $primaryKey       = 'id_mahasiswa';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
-    protected $allowedFields    = ['nama', 'username', 'password', 'nim', 'program_studi', 'angkatan', 'periode', 'id_kbk'];
+    protected $allowedFields    = ['nama', 'username', 'password', 'nim', 'program_studi', 'angkatan', 'periode', 'id_kbk', 'id_dosen'];
 
     public function getMahasiswa($id)
     {
