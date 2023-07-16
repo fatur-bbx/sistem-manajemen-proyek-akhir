@@ -15,6 +15,10 @@ class CreatePenggunaTable extends Migration
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
+            'nama' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+            ],
             'username' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,

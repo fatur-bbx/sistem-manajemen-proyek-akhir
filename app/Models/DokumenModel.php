@@ -42,4 +42,14 @@ class DokumenModel extends Model
     {
         return $this->countAllResults();
     }
+
+    public function getFile($id, $dokumen)
+    {
+        return $this->select('id_dokumen, nama_dokumen')->where('id_mahasiswa', $id)->where('jenis_dokumen', $dokumen)->findAll();
+    }
+
+    public function getForMhs($id)
+    {
+        return $this->where('id_mahasiswa', $id)->orderBy('jenis_dokumen', 'ASC')->findAll();
+    }
 }

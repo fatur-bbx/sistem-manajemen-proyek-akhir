@@ -11,7 +11,7 @@ class MahasiswaModel extends Model
     protected $primaryKey       = 'id_mahasiswa';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
-    protected $allowedFields    = ['nama', 'username', 'password', 'nim', 'program_studi', 'angkatan', 'periode', 'id_kbk', 'id_dosen'];
+    protected $allowedFields    = ['nama', 'username', 'password', 'nim', 'program_studi', 'angkatan', 'kbk', 'periode', 'dosen_pembimbing', 'dosen_penguji'];
 
     public function getMahasiswa($id)
     {
@@ -41,5 +41,15 @@ class MahasiswaModel extends Model
     public function countMahasiswa()
     {
         return $this->countAllResults();
+    }
+
+    public function countMahasiswayangDiampu($id_dosen)
+    {
+        return $this->where('dosen_pembimbing', $id_dosen)->orWhere('dosen_penguji', $id_dosen)->countAllResults();
+    }
+
+    public function getLogin($username, $password)
+    {
+        return $this->where('username', $username)->where('password', $password)->findAll();
     }
 }

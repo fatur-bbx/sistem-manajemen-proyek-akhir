@@ -39,12 +39,16 @@ class CreateMahasiswaTable extends Migration
                 'type' => 'INT',
                 'constraint' => 4,
             ],
-            'id_kbk' => [
+            'kbk' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+            ],
+            'dosen_pembimbing' => [
                 'type' => 'INT',
                 'constraint' => 11,
                 'unsigned' => true,
             ],
-            'id_dosen' => [
+            'dosen_penguji' => [
                 'type' => 'INT',
                 'constraint' => 11,
                 'unsigned' => true,
@@ -60,8 +64,8 @@ class CreateMahasiswaTable extends Migration
         ]);
 
         $this->forge->addPrimaryKey('id_mahasiswa');
-        $this->forge->addForeignKey('id_kbk', 'kbk', 'id_kbk', 'CASCADE', 'CASCADE');
-        $this->forge->addForeignKey('id_dosen', 'pengguna', 'id_pengguna', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('dosen_pembimbing', 'pengguna', 'id_pengguna', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('dosen_penguji', 'pengguna', 'id_pengguna', 'CASCADE', 'CASCADE');
         $this->forge->createTable('mahasiswa');
     }
 

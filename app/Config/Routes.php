@@ -4,6 +4,7 @@ namespace Config;
 
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
+$session = Services::session();
 
 /*
  * --------------------------------------------------------------------
@@ -29,9 +30,47 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/dashboard', 'Index::dashboard');
-$routes->get('/mahasiswa', 'Index::mahasiswa');
+$routes->get('/', 'Index::index');
 
+$routes->post('/doLogin', 'Index::doLogin');
+
+$routes->get('/logout', 'Index::logout');
+
+$routes->get('/dashboard', 'Index::dashboard');
+
+$routes->get('/mahasiswa', 'Index::mahasiswa');
+if ($session->get('exceptMahasiswa')) {
+    $akun = $session->get('exceptMahasiswa');
+    if ($akun[0]['level'] == 0) {
+        $routes->post('/mahasiswa/tambah', 'Index::tambah');
+    }
+}
+
+$routes->post('/mahasiswa/hapus', 'Index::hapus');
+
+if (!$session->get('exceptMahasiswa')) {
+    $routes->get('/dokumen', 'Dokumen::index');
+
+    $routes->post('/dokumen/tambah', 'Dokumen::tambah');
+
+    $routes->post('/dokumen/hapus', 'Dokumen::hapus');
+}
+
+$routes->get('/dokumen/(:num)', 'Dokumen::viewFile/$1');
+
+if ($session->get('exceptMahasiswa')) {
+    $akun = $session->get('exceptMahasiswa');
+
+    if ($akun[0]['level'] == 0) {
+        $routes->get('/dosen', 'Dosen::index');
+
+        $routes->post('/dosen/tambah', 'Dosen::tambah');
+
+        $routes->post('/dosen/ubah', 'Dosen::ubah');
+
+        $routes->post('/dosen/hapus', 'Dosen::hapus');
+    }
+}
 /*
  * --------------------------------------------------------------------
  * Additional Routing

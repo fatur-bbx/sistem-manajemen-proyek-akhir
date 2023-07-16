@@ -11,7 +11,7 @@ class PenggunaModel extends Model
     protected $primaryKey       = 'id_pengguna';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
-    protected $allowedFields    = ["username", "password", "level"];
+    protected $allowedFields    = ["nama","username", "password", "level"];
 
     public function getPengguna($id)
     {
@@ -41,5 +41,10 @@ class PenggunaModel extends Model
     public function countPengguna()
     {
         return $this->countAllResults();
+    }
+
+    public function getLogin($username, $password)
+    {
+        return $this->where('username', $username)->where('password', $password)->findAll();
     }
 }
