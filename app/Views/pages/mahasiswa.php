@@ -115,8 +115,8 @@ if ($session->get('exceptMahasiswa')) {
                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dokumen Berita Acara</th>
                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dokumen Lembar Pengesahan</th>
                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dokumen Revisi</th>
-                <?php if($akun[0]['level'] == 0) { ?>
-                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
+                <?php if ($akun[0]['level'] == 0) { ?>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
                 <?php } ?>
                 <th class="text-secondary opacity-7"></th>
               </tr>
@@ -126,7 +126,7 @@ if ($session->get('exceptMahasiswa')) {
                 <?php $pembimbing = $dosenModel->find($mhs['dosen_pembimbing']); ?>
                 <?php $penguji = $dosenModel->find($mhs['dosen_penguji']); ?>
                 <?php if ($akun[0]['id_pengguna'] == $mhs['dosen_pembimbing'] || $akun[0]['id_pengguna'] == $mhs['dosen_penguji'] || $akun[0]['level'] == 0) { ?>
-                  <?php $dkm = $dokumen->getForMhs($mhs['id_mahasiswa'] );?>
+                  <?php $dkm = $dokumen->getForMhs($mhs['id_mahasiswa']); ?>
                   <tr>
                     <td>
                       <div class="d-flex px-2 py-1">
@@ -198,34 +198,34 @@ if ($session->get('exceptMahasiswa')) {
                         </a>
                       <?php } ?>
                     </td>
-                    <?php if($akun[0]['level'] == 0) { ?>
-                    <td class="align-middle text-center">
-                      <a class="text-danger font-weight-bold text-xs" data-bs-toggle="modal" data-bs-target="#hapusModal<?= $mhs["id_mahasiswa"] ?>" style="cursor: pointer;">
-                        Hapus
-                      </a>
-                      <div class="modal fade" id="hapusModal<?= $mhs["id_mahasiswa"] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                          <div class="modal-content">
-                            <form action="<?= base_url('mahasiswa/hapus') ?>" method="POST">
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Hapus Data Mahasiswa</h5>
-                                <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>
-                              <div class="modal-body">
-                                <input type="hidden" name="id_mahasiswa" value="<?= $mhs["id_mahasiswa"] ?>">
-                                <label>Apakah anda yakin ingin menghapus data ini?</label>
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn bg-gradient-primary">Save changes</button>
-                              </div>
-                            </form>
+                    <?php if ($akun[0]['level'] == 0) { ?>
+                      <td class="align-middle text-center">
+                        <a class="text-danger font-weight-bold text-xs" data-bs-toggle="modal" data-bs-target="#hapusModal<?= $mhs["id_mahasiswa"] ?>" style="cursor: pointer;">
+                          Hapus
+                        </a>
+                        <div class="modal fade" id="hapusModal<?= $mhs["id_mahasiswa"] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <form action="<?= base_url('mahasiswa/hapus') ?>" method="POST">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Hapus Data Mahasiswa</h5>
+                                  <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <input type="hidden" name="id_mahasiswa" value="<?= $mhs["id_mahasiswa"] ?>">
+                                  <label>Apakah anda yakin ingin menghapus data ini?</label>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                                  <button type="submit" class="btn bg-gradient-primary">Save changes</button>
+                                </div>
+                              </form>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </td>
+                      </td>
                     <?php } ?>
                   </tr>
                 <?php } ?>
